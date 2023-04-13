@@ -45,7 +45,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 // saving the DB url to const (accessing from .env file for now)
 // const dbUrl = 'mongodb://127.0.0.1:/yelp-camp';
-const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:/yelp-camp';
 //connect to database
 // 'mongodb://127.0.0.1:/yelp-camp'
 mongoose.connect(dbUrl);
@@ -72,6 +72,10 @@ app.use(express.urlencoded({ extended: true }));
 //_method is the string we want to use to notify ina query string the method we want to use for the form
 app.use(methodOverride('_method'));
 
+//creating secret as a .env variable
+// or the other secret is a development backup
+const secret = process.env.SECRET || 'thisshouldbeabettersecret';
+
 //creating a newMongoDB store
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -79,7 +83,7 @@ const store = MongoStore.create({
     //instead you can lazy update the session, by limiting a period of time:
     touchAfter:24 * 60 * 60, //time period in seconds
     crypto: {
-        secret: 'thisshouldbeabettersecret',
+        secret,
     }
 })
 
@@ -94,7 +98,7 @@ const sessionConfig = {
     store, // it will now using Mongo to store our information
     // naming the session to 'session'
     name: 'session',
-    secret: 'thisshouldbeabettersecret',
+    secret,
     resave: false,
     saveUninitialized: true,
     //configuring the cookie we send back
