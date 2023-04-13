@@ -73,7 +73,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 //creating secret as a .env variable
-// or the other secret is a development backup
+// OR the other secret is a development backup
 const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 
 //creating a newMongoDB store
