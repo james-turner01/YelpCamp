@@ -44,8 +44,8 @@ const MongoStore = require('connect-mongo');
 const mongoSanitize = require('express-mongo-sanitize');
 
 // saving the DB url to const (accessing from .env file for now)
-const dbUrl = 'mongodb://127.0.0.1:/yelp-camp';
-// const dbUrl = process.env.DB_URL;
+// const dbUrl = 'mongodb://127.0.0.1:/yelp-camp';
+const dbUrl = process.env.DB_URL;
 //connect to database
 // 'mongodb://127.0.0.1:/yelp-camp'
 mongoose.connect(dbUrl);
