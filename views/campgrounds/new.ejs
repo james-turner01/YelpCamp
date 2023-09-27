@@ -1,55 +1,51 @@
 <% layout('layouts/boilerplate') %>
-    <div class="row">
-        <h1 class="text-center">New Campground</h1>
-        <div class="col-md-6 offset-md-3 mb-5">
-            <!-- novalidate stops browser validation from working
+<div class="row">
+  <h1 class="text-center">New Campground</h1>
+  <div class="col-md-6 offset-md-3 mb-5">
+    <!-- novalidate stops browser validation from working
             class="validated-form" means the Bootsrap JS for form validation will work on this form -->
-            <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label class="form-label" for="title">Title:</label>
-                    <!-- add "required" for Bootstrap from validation -->
-                    <input class="form-control" type="text" name="campground[title]" id="title"
-                        placeholder="Campground title" required>
-                    <!-- add div with class "valid-feedback" to give feedback if form input is valid -->
-                    <div class="valid-feedback">Looks good!</div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="location">Location:</label>
-                    <input class="form-control" type="text" name="campground[location]" id="location"
-                        placeholder="Campground location" required>
-                    <div class="valid-feedback">Looks good!</div>
-                </div>
-                <!-- <div class="mb-3">
+    <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title:</label>
+        <!-- add "required" for Bootstrap from validation -->
+        <input class="form-control" type="text" name="campground[title]" id="title" placeholder="Campground title" required>
+        <!-- add div with class "valid-feedback" to give feedback if form input is valid -->
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location:</label>
+        <input class="form-control" type="text" name="campground[location]" id="location" placeholder="Campground location" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <!-- <div class="mb-3">
                     <label class="form-label" for="image">Image URL:</label>
                     <input class="form-control" type="text" name="campground[image]" id="image"
                         placeholder="Campground Image URL" required>
                     <div class="valid-feedback">Looks good!</div>
                 </div> -->
-                <div class="mb-3">
-                    <label class="form-label" for="price">Campground Price:</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="price-icon">$</span>
-                        <input type=" text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                            aria-describedby="price-icon" name="campground[price]" required>
-                        <div class="valid-feedback">Looks good!</div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description:</label>
-                    <textarea class="form-control" type="text-area" name="campground[description]" id="description"
-                        placeholder="Describe the campground" required></textarea>
-                </div>
-                <div class="valid-feedback">Looks good!</div>
-                <div class="custom-file">
-                    <label for="image" class="form-label">Add Images:</label>
-                    <input class="form-control" type="file" id="image" name="image" multiple>
-                    <!-- lists the files uploaded underneath -->
-                    <label for="image" class="custom-file-label text-muted mb-3"></label>
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-success">Add Campground</button>
-                </div>
-            </form>
-            <a href="/campgrounds">All Campgrounds</a>
+      <div class="mb-3">
+        <label class="form-label" for="price">Campground Price:</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-icon">$</span>
+          <input type=" text" class="form-control" id="price" placeholder="0.00" aria-label="price" aria-describedby="price-icon" name="campground[price]" required>
+          <div class="valid-feedback">Looks good!</div>
         </div>
-    </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description:</label>
+        <textarea class="form-control" type="text-area" name="campground[description]" id="description" placeholder="Describe the campground" required></textarea>
+      </div>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="custom-file">
+        <label for="image" class="form-label">Add Images:</label>
+        <input class="form-control" type="file" id="image" name="image" multiple>
+        <!-- lists the files uploaded underneath -->
+        <label for="image" class="custom-file-label text-muted mb-3"></label>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Add Campground</button>
+      </div>
+    </form>
+    <a href="/campgrounds">All Campgrounds</a>
+  </div>
+</div>

@@ -11,6 +11,8 @@ const User = require('../models/user');
 const passport = require('passport');
 //require users controller
 const users = require('../controllers/users');
+//require returnTo middeware function from middleware.js
+const {storeReturnTo} = require('../middleware');
 
 //grouping the register routes
 router.route('/register')
@@ -25,7 +27,7 @@ router.route('/login')
     //note: using passports authenticate method where:
     // failureFlash: true (flash a message automatically if login fails)
     // failureRedirect: '/login' if it fails to login it will redirect us to the login page again
-    .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/login', keepSessionInfo: true }), users.login)
+    .post(storeReturnTo, passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), users.login)
 
 //logout route
 router.get('/logout', users.logout);

@@ -70,6 +70,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //app.use method override
 //_method is the string we want to use to notify ina query string the method we want to use for the form
+// works for req.params and req.body
 app.use(methodOverride('_method'));
 
 //creating secret as a .env variable
@@ -127,7 +128,6 @@ app.use(flash());
 app.use(helmet());
 
 // adding in our own configuration for contentSecurityPolicy
-
 // sources and scripts we want to allow
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com/",
@@ -139,23 +139,11 @@ const scriptSrcUrls = [
 
 
 ];
-const styleSrcUrls = [
-    "https://kit-free.fontawesome.com/",
-    "https://stackpath.bootstrapcdn.com/",
-    "https://api.mapbox.com/",
-    "https://api.tiles.mapbox.com/",
-    "https://fonts.googleapis.com/",
-    "https://use.fontawesome.com/",
-    "https://cdn.jsdelivr.net/",
-    "https://res.cloudinary.com/dv5vm4sqh/"
-];
+const styleSrcUrls = [];
 const connectSrcUrls = [
-    "https://*.tiles.mapbox.com",
-    "https://api.mapbox.com",
-    "https://events.mapbox.com",
-    "https://res.cloudinary.com/dv5vm4sqh/"
+    "maps.googleapis.com"
 ];
-const fontSrcUrls = ["https://res.cloudinary.com/dv5vm4sqh/"];
+const fontSrcUrls = [];
 
 app.use(
     helmet.contentSecurityPolicy({
