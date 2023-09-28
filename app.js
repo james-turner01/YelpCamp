@@ -246,11 +246,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('errors', { err })
 })
 
-// setting our port number to be whatever Render sets process.env.PORT to
-// or if in dvelopment mode will use port 3000
-const port = process.env.PORT || 3000
-
-
-app.listen(port, () => {
-    console.log(`Serving On Port ${port}`)
+app.listen(3000, () => {
+    console.log("Serving On Port 3000")
 })
