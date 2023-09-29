@@ -36,11 +36,9 @@ module.exports.renderLogin = (req, res) => {
 module.exports.login = (req, res) => {
     // if you make it into the route handler then that means passport.authenticate was successful
     req.flash('success', 'welcome back!');
-    // check to see if there is a url stored in req.session.returnTo, if there is save it to redirectUrl
+    // check to see if there is a url stored in res.locals.returnTo, if there is save it to redirectUrl
     // if there is not set redirectUrl to '/campgrounds'
-    const redirectUrl = req.session.returnTo || '/campgrounds';
-    //deletes returnTo from req.session
-    delete req.session.returnTo;
+    const redirectUrl = res.locals.returnTo || '/campgrounds';
     res.redirect(redirectUrl);
 }
 
